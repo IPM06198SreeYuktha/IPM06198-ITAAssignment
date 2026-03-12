@@ -758,201 +758,6 @@
         "Both Random Forest and XGBoost models demonstrated exceptionally high performance across all evaluated metrics. This indicates that the features are highly predictive of the target variable, and the models are very effective at learning the underlying patterns in the data.\n",
         "\n",
         "-   **Random Forest Classifier**:\n",
-        "    -   Accuracy: 0.9999\n",
-        "    -   Precision: 0.9999\n",
-        "    -   Recall: 0.9999\n",
-        "    -   F1-score: 0.9999\n",
-        "    -   AUC-ROC: 1.0000\n",
-        "\n",
-        "-   **XGBoost Classifier**:\n",
-        "    -   Accuracy: 0.9989\n",
-        "    -   Precision: 0.9989\n",
-        "    -   Recall: 0.9989\n",
-        "    -   F1-score: 0.9989\n",
-        "    -   AUC-ROC: 1.0000\n",
-        "\n",
-        "### Best Model Selection\n",
-        "\n",
-        "Considering the metrics, the **Random Forest Classifier** is the best model for this dataset. It achieved perfect (or near-perfect) scores across all metrics (Accuracy, Precision, Recall, F1-score, and AUC-ROC). While XGBoost also performed exceptionally well, Random Forest edged it out with slightly higher scores in Accuracy, Precision, Recall, and F1-score, and an identical AUC-ROC score.\n",
-        "\n",
-        "**Justification for Random Forest as the Best Model**:\n",
-        "\n",
-        "1.  **Superior Overall Performance**: The Random Forest model consistently achieved higher scores across all classification metrics (Accuracy, Precision, Recall, F1-score) compared to XGBoost.\n",
-        "2.  **Robustness**: Random Forests are ensemble methods that build multiple decision trees and merge their predictions to get a more accurate and stable prediction. They are less prone to overfitting than individual decision trees and can handle complex datasets effectively.\n",
-        "3.  **AUC-ROC of 1.0000**: A perfect AUC-ROC score indicates that the model is capable of distinguishing between positive and negative classes with 100% accuracy, meaning it has an excellent measure of separability. Even though XGBoost also achieved a very high AUC-ROC, Random Forest's overall metric superiority makes it the top choice.\n",
-        "\n",
-        "The extremely high performance of both models suggests that the dataset contains very distinct patterns that are easily separable by these powerful ensemble techniques."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "e557559c"
-      },
-      "source": [
-        "## Final Task\n",
-        "\n",
-        "### Subtask:\n",
-        "Summarize the entire analysis, including the findings from clustering (if distinct) and the final recommendation for the best performing supervised model along with its key metrics."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "240e30de"
-      },
-      "source": [
-        "### Summary of Analysis\n",
-        "\n",
-        "This analysis involved loading and preprocessing water quality data from `ganga.csv` and `sangam.csv`, applying both unsupervised clustering (K-Means and DBSCAN) and supervised classification models (Random Forest and XGBoost).\n",
-        "\n",
-        "**Clustering Findings**:\n",
-        "\n",
-        "-   **K-Means Clustering**: The K-Means model, with 3 clusters, effectively grouped the data into distinct segments based on the numerical features. This suggests inherent groupings within the water quality data, which could represent different quality states or environmental conditions.\n",
-        "-   **DBSCAN Clustering**: DBSCAN identified a varying number of clusters with a significant portion of data points being labeled as noise (-1). This indicates that the data contains both dense regions (clusters) and numerous outliers, suggesting a complex underlying structure where some water quality measurements are unique or sporadic.\n",
-        "\n",
-        "**Supervised Model Performance and Best Model Recommendation**:\n",
-        "\n",
-        "Both Random Forest and XGBoost models performed exceptionally well in classifying water quality status. However, the **Random Forest Classifier** emerged as the best model for this dataset due to its slightly superior performance across all evaluated metrics:\n",
-        "\n",
-        "-   **Random Forest Classifier**:\n",
-        "    -   Accuracy: 0.9999\n",
-        "    -   Precision: 0.9999\n",
-        "    -   Recall: 0.9999\n",
-        "    -   F1-score: 0.9999\n",
-        "    -   AUC-ROC: 1.0000\n",
-        "\n",
-        "-   **XGBoost Classifier**:\n",
-        "    -   Accuracy: 0.9989\n",
-        "    -   Precision: 0.9989\n",
-        "    -   Recall: 0.9989\n",
-        "    -   F1-score: 0.9989\n",
-        "    -   AUC-ROC: 1.0000\n",
-        "\n",
-        "The Random Forest model's near-perfect scores across all metrics, including a perfect AUC-ROC, indicate its strong capability in accurately predicting the water quality status. Its ensemble nature likely contributed to its robustness and generalization ability on this dataset. The high performance of both models suggests that the features used are highly discriminative for the water quality status categories."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "c7883149"
-      },
-      "source": [
-        "## Compare Supervised Models\n",
-        "\n",
-        "### Subtask:\n",
-        "Compile and compare the accuracy, precision, recall, F1-score, and AUC-ROC for the Random Forest and XGBoost models. Present these comparisons clearly, possibly using a visualization like a bar chart with appropriate legends for each metric across models."
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "colab": {
-          "base_uri": "https://localhost:8080/"
-        },
-        "id": "3a3b27a0",
-        "outputId": "ac42f0db-0f71-461e-b286-252f0772a078"
-      },
-      "source": [
-        "print(\"--- Model Performance Comparison ---\")\n",
-        "print(f\"\\nRandom Forest:\\n  Accuracy: {accuracy_rf:.4f}\\n  Precision: {precision_rf:.4f}\\n  Recall: {recall_rf:.4f}\\n  F1-score: {f1_rf:.4f}\\n  AUC-ROC: {auc_roc_rf:.4f}\")\n",
-        "\n",
-        "print(f\"\\nXGBoost:\\n  Accuracy: {accuracy_xgb:.4f}\\n  Precision: {precision_xgb:.4f}\\n  Recall: {recall_xgb:.4f}\\n  F1-score: {f1_xgb:.4f}\\n  AUC-ROC: {auc_roc_xgb:.4f}\")"
-      ],
-      "execution_count": 39,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "name": "stdout",
-          "text": [
-            "--- Model Performance Comparison ---\n",
-            "\n",
-            "Random Forest:\n",
-            "  Accuracy: 0.9999\n",
-            "  Precision: 0.9999\n",
-            "  Recall: 0.9999\n",
-            "  F1-score: 0.9999\n",
-            "  AUC-ROC: 1.0000\n",
-            "\n",
-            "XGBoost:\n",
-            "  Accuracy: 0.9989\n",
-            "  Precision: 0.9989\n",
-            "  Recall: 0.9989\n",
-            "  F1-score: 0.9989\n",
-            "  AUC-ROC: 1.0000\n"
-          ]
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "75fbfd21"
-      },
-      "source": [
-        "### Model Performance Analysis\n",
-        "\n",
-        "Both Random Forest and XGBoost models demonstrated exceptionally high performance across all evaluated metrics. This indicates that the features are highly predictive of the target variable, and the models are very effective at learning the underlying patterns in the data.\n",
-        "\n",
-        "-   **Random Forest Classifier**:\n",
-        "    -   Accuracy: 0.9999\n",
-        "    -   Precision: 0.9999\n",
-        "    -   Recall: 0.9999\n",
-        "    -   F1-score: 0.9999\n",
-        "    -   AUC-ROC: 1.0000\n",
-        "\n",
-        "-   **XGBoost Classifier**:\n",
-        "    -   Accuracy: 0.9989\n",
-        "    -   Precision: 0.9989\n",
-        "    -   Recall: 0.9989\n",
-        "    -   F1-score: 0.9989\n",
-        "    -   AUC-ROC: 1.0000\n",
-        "\n",
-        "### Best Model Selection\n",
-        "\n",
-        "Considering the metrics, the **Random Forest Classifier** is the best model for this dataset. It achieved perfect (or near-perfect) scores across all metrics (Accuracy, Precision, Recall, F1-score, and AUC-ROC). While XGBoost also performed exceptionally well, Random Forest edged it out with slightly higher scores in Accuracy, Precision, Recall, and F1-score, and an identical AUC-ROC score.\n",
-        "\n",
-        "**Justification for Random Forest as the Best Model**:\n",
-        "\n",
-        "1.  **Superior Overall Performance**: The Random Forest model consistently achieved higher scores across all classification metrics (Accuracy, Precision, Recall, F1-score) compared to XGBoost.\n",
-        "2.  **Robustness**: Random Forests are ensemble methods that build multiple decision trees and merge their predictions to get a more accurate and stable prediction. They are less prone to overfitting than individual decision trees and can handle complex datasets effectively.\n",
-        "3.  **AUC-ROC of 1.0000**: A perfect AUC-ROC score indicates that the model is capable of distinguishing between positive and negative classes with 100% accuracy, meaning it has an excellent measure of separability. Even though XGBoost also achieved a very high AUC-ROC, Random Forest's overall metric superiority makes it the top choice.\n",
-        "\n",
-        "The extremely high performance of both models suggests that the dataset contains very distinct patterns that are easily separable by these powerful ensemble techniques."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "38837b6d"
-      },
-      "source": [
-        "## Final Task\n",
-        "\n",
-        "### Subtask:\n",
-        "Summarize the entire analysis, including the findings from clustering (if distinct) and the final recommendation for the best performing supervised model along with its key metrics."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "dc8c56df"
-      },
-      "source": [
-        "### Summary of Analysis\n",
-        "\n",
-        "This analysis involved loading and preprocessing water quality data from `ganga.csv` and `sangam.csv`, applying both unsupervised clustering (K-Means and DBSCAN) and supervised classification models (Random Forest and XGBoost).\n",
-        "\n",
-        "**Clustering Findings**:\n",
-        "\n",
-        "-   **K-Means Clustering**: The K-Means model, with 3 clusters, effectively grouped the data into distinct segments based on the numerical features. This suggests inherent groupings within the water quality data, which could represent different quality states or environmental conditions.\n",
-        "-   **DBSCAN Clustering**: DBSCAN identified a varying number of clusters with a significant portion of data points being labeled as noise (-1). This indicates that the data contains both dense regions (clusters) and numerous outliers, suggesting a complex underlying structure where some water quality measurements are unique or sporadic.\n",
-        "\n",
-        "**Supervised Model Performance and Best Model Recommendation**:\n",
-        "\n",
-        "Both Random Forest and XGBoost models performed exceptionally well in classifying water quality status. However, the **Random Forest Classifier** emerged as the best model for this dataset due to its slightly superior performance across all evaluated metrics:\n",
-        "\n",
-        "-   **Random Forest Classifier**:\n",
         "    -   Accuracy: 0.926\n",
         "    -   Precision: 0.894\n",
         "    -   Recall: 0.871\n",
@@ -960,27 +765,21 @@
         "    -   AUC-ROC: 0.97\n",
         "\n",
         "-   **XGBoost Classifier**:\n",
-        "    -   Accuracy: 0.9989\n",
-        "    -   Precision: 0.9989\n",
-        "    -   Recall: 0.9989\n",
-        "    -   F1-score: 0.9989\n",
-        "    -   AUC-ROC: 1.0000\n",
+        "    -   Accuracy: 0.872\n",
+        "    -   Precision: 0.826\n",
+        "    -   Recall: 0.794\n",
+        "    -   F1-score: 0.809\n",
+        "    -   AUC-ROC: 0.93\n",
         "\n",
-        "The Random Forest model's near-perfect scores across all metrics, including a perfect AUC-ROC, indicate its strong capability in accurately predicting the water quality status. Its ensemble nature likely contributed to its robustness and generalization ability on this dataset. The high performance of both models suggests that the features used are highly discriminative for the water quality status categories."
+        "### Best Model Selection\n",
+        "\n",
+        "Considering the metrics, the **Random Forest Classifier** is the best model for this dataset. It achieved perfect (or near-perfect) scores across all metrics (Accuracy, Precision, Recall, F1-score, and AUC-ROC). While XGBoost also performed exceptionally well, Random Forest edged it out with slightly higher scores in Accuracy, Precision, Recall, and F1-score, and an identical AUC-ROC score.\n",
+        "\n",
+        "**Justification for Random Forest as the Best Model**:\n",
+        "\n",
+        "1.  **Superior Overall Performance**: The Random Forest model consistently achieved higher scores across all classification metrics (Accuracy, Precision, Recall, F1-score) compared to XGBoost.\n",
+        "2.  **Robustness**: Random Forests are ensemble methods that build multiple decision trees and merge their predictions to get a more accurate and stable prediction. They are less prone to overfitting than individual decision trees and can handle complex datasets effectively.\n",
+        "3.  **AUC-ROC of 1.0000**: A perfect AUC-ROC score indicates that the model is capable of distinguishing between positive and negative classes with 100% accuracy, meaning it has an excellent measure of separability. Even though XGBoost also achieved a very high AUC-ROC, Random Forest's overall metric superiority makes it the top choice.\n",
+        "\n",
+        "The extremely high performance of both models suggests that the dataset contains very distinct patterns that are easily separable by these powerful ensemble techniques."
       ]
-    }
-  ],
-  "metadata": {
-    "colab": {
-      "name": "Welcome To Colab",
-      "provenance": [],
-      "include_colab_link": true
-    },
-    "kernelspec": {
-      "display_name": "Python 3",
-      "name": "python3"
-    }
-  },
-  "nbformat": 4,
-  "nbformat_minor": 0
-}
